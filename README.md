@@ -12,7 +12,13 @@ Starter Template for a FastAPI project
 curl -fsSL https://raw.githubusercontent.com/devharshthakur/fastapi-starter-template/main/setup.sh | bash
 ```
 
-This clones the template, removes `.git` history, and initialises a fresh repo with an initial commit.
+You'll be prompted for a project name. The template is cloned into a directory of that name in your current working directory, with a fresh git history.
+
+Or pass the name directly:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/devharshthakur/fastapi-starter-template/main/setup.sh | bash -s my-project
+```
 
 ### Manual clone
 

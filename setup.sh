@@ -2,13 +2,23 @@
 set -euo pipefail
 
 # Usage: curl -fsSL https://raw.githubusercontent.com/devharshthakur/fastapi-starter-template/main/setup.sh | bash
-# Or:    bash setup.sh [target-directory]
+# Or:    bash setup.sh [project-name]
 
 REPO="https://github.com/devharshthakur/fastapi-starter-template.git"
-DIR="${1:-fastapi-starter-template}"
 
 # preflight
 command -v git >/dev/null 2>&1 || { echo >&2 "ERROR: git is required but not installed."; exit 1; }
+
+if [ -n "${1:-}" ]; then
+  DIR="$1"
+else
+  read -r -p "Project name: " DIR
+fi
+
+if [ -z "$DIR" ]; then
+  echo >&2 "ERROR: a project name is required."
+  exit 1
+fi
 
 if [ -d "$DIR" ]; then
   echo >&2 "ERROR: directory '$DIR' already exists. Remove it or choose a different name."
