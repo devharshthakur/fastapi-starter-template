@@ -6,9 +6,20 @@ Starter Template for a FastAPI project
 
 ## Quick Start
 
+### One-liner (recommended)
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/devharshthakur/fastapi-starter-template/main/setup.sh | bash
+```
+
+This clones the template, removes `.git` history, and initialises a fresh repo with an initial commit.
+
+### Manual clone
+
 ```bash
 git clone https://github.com/devharshthakur/fastapi-starter-template.git fastapi-app
 cd fastapi-app
+rm -rf .git && git init -b main && git add -A && git commit -m "chore: init"
 
 uv sync
 pnpm install
