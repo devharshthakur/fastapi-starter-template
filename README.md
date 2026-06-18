@@ -6,32 +6,13 @@ Starter Template for a FastAPI project
 
 ## Quick Start
 
-### One-liner (recommended)
-
 ```bash
-curl -fsSL https://raw.githubusercontent.com/devharshthakur/fastapi-starter-template/main/setup.sh | bash
+git clone https://github.com/devharshthakur/fastapi-starter-template.git my-app
+cd my-app
+bash setup.sh
 ```
 
-You'll be prompted for a project name. The template is cloned into a directory of that name in your current working directory, with a fresh git history.
-
-Or pass the name directly:
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/devharshthakur/fastapi-starter-template/main/setup.sh | bash -s my-project
-```
-
-### Manual clone
-
-```bash
-git clone https://github.com/devharshthakur/fastapi-starter-template.git fastapi-app
-cd fastapi-app
-rm -rf .git && git init -b main && git add -A && git commit -m "chore: init"
-
-uv sync
-pnpm install
-
-pnpm dev
-```
+`setup.sh` removes the template's `.git` history, initialises a fresh repo, installs dependencies, and starts the dev server.
 
 Open [http://localhost:8000/api/](http://localhost:8000/api/) → `{"status":"ok","message":"API server is running"}`
 
