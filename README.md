@@ -38,19 +38,21 @@ Or use `docker compose` commands directly. The `PORT` and `API_PREFIX` values in
 
 ## Scripts
 
-| Command             | Description              |
-| ------------------- | ------------------------ |
-| `pnpm dev`          | Dev server + hot reload  |
-| `pnpm start`        | Production server        |
-| `pnpm lint`         | Ruff + prettier checks   |
-| `pnpm format`       | Auto-format all code     |
-| `pnpm typecheck`    | Type checker (`ty`)      |
-| `pnpm test`         | Pytest                   |
-| `pnpm check`        | Lint + typecheck + tests |
-| `pnpm docker:build` | Build Docker image       |
-| `pnpm docker:up`    | Start Docker container   |
-| `pnpm docker:down`  | Stop Docker container    |
-| `pnpm docker:logs`  | Tail Docker logs         |
+| Command             | Description                                |
+| ------------------- | ------------------------------------------ |
+| `pnpm dev`          | Dev server + hot reload                    |
+| `pnpm start`        | Production server                          |
+| `pnpm lint`         | Ruff + prettier checks                     |
+| `pnpm format`       | Auto-format all code                       |
+| `pnpm typecheck`    | Type checker (`ty`)                        |
+| `pnpm test`         | Pytest                                     |
+| `pnpm check`        | Lint + typecheck + tests                   |
+| `pnpm docker:build` | Build Docker image                         |
+| `pnpm docker:up`    | Start Docker container                     |
+| `pnpm docker:down`  | Stop Docker container                      |
+| `pnpm docker:logs`  | Tail Docker logs                           |
+| `pnpm changelog`    | Bump version + update CHANGELOG.md         |
+| `pnpm release`      | Full release: bump, changelog, commit, tag |
 
 Pre-commit auto-formats staged files via husky + lint-staged.
 
@@ -130,6 +132,30 @@ class Settings(BaseSettings):
     api_prefix: str = "/api"
     database_url: str = "..."  # your field
 ```
+
+## Changelog
+
+Uses [changelogen](https://github.com/unjs/changelogen) — automatic changelog from [Conventional Commits](https://www.conventionalcommits.org/).
+
+| Script           | What it does                                         |
+| ---------------- | ---------------------------------------------------- |
+| `pnpm changelog` | Bump version + update `CHANGELOG.md`. No commit/tag. |
+| `pnpm release`   | Full release: `changelog` + git commit + git tag.    |
+
+**Workflow**:
+
+```bash
+# 1. Preview what the next version looks like
+pnpm changelog
+
+# 2. Review CHANGELOG.md and version bump, then release
+pnpm release
+
+# 3. Push the release commit and tag
+git push --follow-tags
+```
+
+`pnpm changelog` syncs version across `package.json` and `pyproject.toml` automatically. `pnpm release` commits both files + the changelog.
 
 ## Linting & Formatting
 
