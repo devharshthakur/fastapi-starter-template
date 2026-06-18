@@ -1,0 +1,42 @@
+# ---------------------------------------------------------------------------
+# Python virtual environment — must be excluded per uv Docker best practices.
+# The .venv is platform-specific; Docker recreates it from uv.lock at build time.
+# ---------------------------------------------------------------------------
+.venv/
+
+# Bytecode and caches
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.ruff_cache/
+.pytest_cache/
+
+# Node / dev tooling — not needed in production image
+node_modules/
+.husky/
+.lintstagedrc.json
+.prettierrc
+.prettierignore
+pnpm-lock.yaml
+pnpm-workspace.yaml
+package.json
+
+# Git
+.git/
+
+# Tests — not shipped in production image
+tests/
+
+# Environment — mounted at runtime via docker-compose or passed explicitly
+.env
+
+# Documentation and metadata
+*.md
+LICENSE
+
+# Editor / OS junk
+.DS_Store
+Thumbs.db
+*.swp
+*.swo

@@ -2,7 +2,6 @@
   "name": "fastapi-starter-template",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "type": "module",
   "scripts": {
     "dev": "uv run fastapi dev main.py",
@@ -12,6 +11,10 @@
     "typecheck": "uv run ty check",
     "test": "uv run pytest",
     "check": "pnpm lint && pnpm typecheck && pnpm test",
+    "docker:build": "docker compose build",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f",
     "prepare": "husky"
   },
   "keywords": [],

@@ -18,17 +18,41 @@ pnpm dev
 
 Open [http://localhost:8000/api/](http://localhost:8000/api/) → `{"status":"ok","message":"API server is running"}`
 
+## Docker
+
+One-command production deployment. No Python or Node.js required on the host.
+
+```bash
+cp .env.example .env
+docker compose up -d
+```
+
+Open [http://localhost:8000/api/](http://localhost:8000/api/).
+
+| Command             | Description                |
+| ------------------- | -------------------------- |
+| `pnpm docker:up`    | Start in background        |
+| `pnpm docker:down`  | Stop and remove containers |
+| `pnpm docker:build` | Rebuild the image          |
+| `pnpm docker:logs`  | Tail logs                  |
+
+Or use `docker compose` commands directly. The `PORT` and `API_PREFIX` values in your `.env` file are picked up automatically. The image uses [uv](https://docs.astral.sh/uv/) for fast, reproducible dependency installation.
+
 ## Scripts
 
-| Command          | Description              |
-| ---------------- | ------------------------ |
-| `pnpm dev`       | Dev server + hot reload  |
-| `pnpm start`     | Production server        |
-| `pnpm lint`      | Ruff + prettier checks   |
-| `pnpm format`    | Auto-format all code     |
-| `pnpm typecheck` | Type checker (`ty`)      |
-| `pnpm test`      | Pytest                   |
-| `pnpm check`     | Lint + typecheck + tests |
+| Command             | Description              |
+| ------------------- | ------------------------ |
+| `pnpm dev`          | Dev server + hot reload  |
+| `pnpm start`        | Production server        |
+| `pnpm lint`         | Ruff + prettier checks   |
+| `pnpm format`       | Auto-format all code     |
+| `pnpm typecheck`    | Type checker (`ty`)      |
+| `pnpm test`         | Pytest                   |
+| `pnpm check`        | Lint + typecheck + tests |
+| `pnpm docker:build` | Build Docker image       |
+| `pnpm docker:up`    | Start Docker container   |
+| `pnpm docker:down`  | Stop Docker container    |
+| `pnpm docker:logs`  | Tail Docker logs         |
 
 Pre-commit auto-formats staged files via husky + lint-staged.
 

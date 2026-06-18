@@ -1,0 +1,31 @@
+# FastAPI Starter Template — Production Docker Compose
+# One-command deployment:  cp .env.example .env && docker compose up -d
+
+services:
+  app:
+    # Build the image from the Dockerfile in this directory
+    build: .
+
+    # Map PORT from .env (default 8000).  Format: <host>:<container>
+    ports:
+      - "${PORT:-8000}:${PORT:-8000}"
+
+    # pydantic-settings reads .env automatically at startup
+    env_file:
+      - .env
+
+    # Restart on crash or host reboot, but NOT after explicit `docker compose down`
+    restart: unless-stopped
+
+    # Health check: curl API root every 30 s.  Unhealthy after 3 failures.
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://localhost:${PORT:-8000}/api/')",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
