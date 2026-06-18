@@ -1,0 +1,37 @@
+{
+  "name": "fastapi-starter-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "uv run fastapi dev main.py",
+    "start": "uv run fastapi run main.py",
+    "lint": "uv run ruff check . && pnpm exec prettier --check .",
+    "format": "uv run ruff format . && pnpm exec prettier --write .",
+    "typecheck": "uv run ty check",
+    "test": "uv run pytest",
+    "check": "pnpm lint && pnpm typecheck && pnpm test",
+    "prepare": "husky"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Harsh Thakur",
+    "email": "harshprojects2002@outlook.com",
+    "url": "https://github.com/devharshthakur"
+  },
+  "packageManager": "pnpm@11.7.0",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^25.9.3",
+    "eslint": "^10.5.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.7",
+    "prettier": "^3.8.4",
+    "prettier-plugin-toml": "^2.0.6",
+    "tsx": "^4.22.4"
+  },
+  "dependencies": {
+    "typescript": "^6.0.3"
+  }
+}
