@@ -1,11 +1,13 @@
 # FastAPI Starter Template
 
-Lean FastAPI starter with one middleware, one route, one service — copy the pattern, build from there.
+[![GitHub](https://img.shields.io/badge/github-devharshthakur/fastapi--starter--template-blue?logo=github)](https://github.com/devharshthakur/fastapi-starter-template)
+
+Starter Template for a FastAPI project
 
 ## Quick Start
 
 ```bash
-git clone <repo-url> fastapi-app
+git clone https://github.com/devharshthakur/fastapi-starter-template.git fastapi-app
 cd fastapi-app
 
 uv sync
