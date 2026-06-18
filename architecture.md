@@ -25,6 +25,25 @@ tests/
 └── test_hello.py
 ```
 
+## Request Lifecycle
+
+```
+Incoming HTTP Request
+        │
+        ▼
+┌─────────────────────────┐
+│  RequestIDMiddleware     │  → Reads or generates X-Request-ID
+│                          │  → Stores request.state.request_id
+│                          │  → Sets X-Request-ID on response
+└───────────┬─────────────┘
+            ▼
+┌─────────────────────────┐
+│  Route handler           │  → Builds HelloService, returns status JSON
+└───────────┬─────────────┘
+            ▼
+    HTTP Response
+```
+
 ## Router Composition
 
 `app/main.py` builds an aggregator router and includes route modules:
