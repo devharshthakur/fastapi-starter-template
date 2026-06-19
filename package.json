@@ -12,9 +12,10 @@
     "test": "uv run pytest",
     "check": "pnpm lint && pnpm typecheck && pnpm test",
     "docker:build": "docker compose build",
-    "docker:up": "docker compose up -d",
-    "docker:down": "docker compose down",
-    "docker:logs": "docker compose logs -f",
+    "docker:rebuild": "docker compose build --no-cache",
+    "docker:start": "docker compose up -d",
+    "docker:stop": "docker compose stop",
+    "docker:clean": "docker compose down",
     "prepare": "husky"
   },
   "keywords": [],

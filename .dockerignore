@@ -1,7 +1,3 @@
-# ---------------------------------------------------------------------------
-# Python virtual environment — must be excluded per uv Docker best practices.
-# The .venv is platform-specific; Docker recreates it from uv.lock at build time.
-# ---------------------------------------------------------------------------
 .venv/
 
 # Bytecode and caches
