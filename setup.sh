@@ -18,6 +18,9 @@ fi
 echo "→ Removing template .git history…"
 rm -rf .git
 
+# remove template-internal tooling not needed in generated projects
+rm -f scripts/changelog.sh scripts/release.sh CHANGELOG.md
+
 echo "→ Initialising fresh repository…"
 git init -b main
 git add -A
