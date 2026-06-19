@@ -4,8 +4,8 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "dev": "uv run fastapi dev main.py",
-    "start": "uv run fastapi run main.py",
+    "dev": "uv run python scripts/serve.py --dev",
+    "start": "uv run python scripts/serve.py",
     "lint": "uv run ruff check . && pnpm exec prettier --check .",
     "format": "uv run ruff format . && pnpm exec prettier --write .",
     "typecheck": "uv run ty check",
