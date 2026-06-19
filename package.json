@@ -1,13 +1,13 @@
 {
   "name": "fastapi-starter-template",
   "version": "1.3.0",
-  "description": "",
+  "description": "A lean fastapi starter template",
   "type": "module",
   "scripts": {
     "dev": "uv run python scripts/serve.py --dev",
     "start": "uv run python scripts/serve.py",
-    "lint": "uv run ruff check . && pnpm exec prettier --check .",
-    "format": "uv run ruff format . && pnpm exec prettier --write .",
+    "lint": "uv run ruff check . && prettier --check .",
+    "format": "uv run ruff format . && prettier --write .",
     "typecheck": "uv run ty check",
     "test": "uv run pytest",
     "check": "pnpm lint && pnpm typecheck && pnpm test",

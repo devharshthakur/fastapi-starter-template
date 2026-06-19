@@ -2,7 +2,7 @@
 
 [![GitHub](https://img.shields.io/badge/github-devharshthakur/fastapi--starter--template-blue?logo=github)](https://github.com/devharshthakur/fastapi-starter-template)
 
-Starter Template for a FastAPI project
+A clean, opinionated FastAPI starter that gets out of your way. Comes with uv for fast dependency management, Docker for production deployment, and pre-commit quality checks.
 
 ## Quick Start
 
@@ -12,157 +12,55 @@ cd my-app
 bash setup.sh
 ```
 
-`setup.sh` removes the template's `.git` history, initialises a fresh repo, installs dependencies, and starts the dev server.
+This strips the template's git history, initialises a fresh repository, installs everything, and starts the dev server. You go from clone to `localhost:8000/api/` in one command.
 
-Open [http://localhost:8000/api/](http://localhost:8000/api/) → `{"status":"ok","message":"API server is running"}`
+## Run project via Docker
 
-## Docker
-
-One-command production deployment. No Python or Node.js required on the host.
+Run the app in production via docker as well
 
 ```bash
 cp .env.example .env
-docker compose up -d
+pnpm docker:start
 ```
 
-Open [http://localhost:8000/api/](http://localhost:8000/api/).
+| Command               | What it does                              |
+| --------------------- | ----------------------------------------- |
+| `pnpm docker:build`   | Build the image (uses cache)              |
+| `pnpm docker:rebuild` | Rebuild the image from scratch (no cache) |
+| `pnpm docker:start`   | Start containers in background            |
+| `pnpm docker:stop`    | Stop running containers (keep them)       |
+| `pnpm docker:clean`   | Stop and remove containers + network      |
 
-| Command             | Description                |
-| ------------------- | -------------------------- |
-| `pnpm docker:up`    | Start in background        |
-| `pnpm docker:down`  | Stop and remove containers |
-| `pnpm docker:build` | Rebuild the image          |
-| `pnpm docker:logs`  | Tail logs                  |
+## Configuration — Just Environment Variables
 
-Or use `docker compose` commands directly. The `PORT` and `API_PREFIX` values in your `.env` file are picked up automatically. The image uses [uv](https://docs.astral.sh/uv/) for fast, reproducible dependency installation.
+This template uses pydantic settings to parse env contents.
 
-## Scripts
+| Variable     | Default | What it controls                                         |
+| ------------ | ------- | -------------------------------------------------------- |
+| `PORT`       | `8000`  | Which port the server listens on (dev, prod, and Docker) |
+| `API_PREFIX` | `/api`  | URL prefix for all API routes                            |
 
-| Command             | Description                                |
-| ------------------- | ------------------------------------------ |
-| `pnpm dev`          | Dev server + hot reload                    |
-| `pnpm start`        | Production server                          |
-| `pnpm lint`         | Ruff + prettier checks                     |
-| `pnpm format`       | Auto-format all code                       |
-| `pnpm typecheck`    | Type checker (`ty`)                        |
-| `pnpm test`         | Pytest                                     |
-| `pnpm check`        | Lint + typecheck + tests                   |
-| `pnpm docker:build` | Build Docker image                         |
-| `pnpm docker:up`    | Start Docker container                     |
-| `pnpm docker:down`  | Stop Docker container                      |
-| `pnpm docker:logs`  | Tail Docker logs                           |
-| `pnpm changelog`    | Bump version + update CHANGELOG.md         |
-| `pnpm release`      | Full release: bump, changelog, commit, tag |
+Copy `.env.example` to `.env` and you're set. To add your own settings, extend the `Settings` class in `app/config.py`:
 
-Pre-commit auto-formats staged files via husky + lint-staged.
+> [!NOTE]
+> Every new field is automatically loaded from the matching environment variable, type-checked, and validated at startup.
 
-## Project Structure
+## Project Structure & Architecture
 
-```
-app/
-├── main.py                  # App factory + router wiring
-├── config.py                # Settings (PORT, API_PREFIX)
-├── middlewares/
-│   ├── request_id.py        # X-Request-ID middleware
-│   └── setup.py             # Middleware registration
-├── routes/
-│   └── hello.py             # GET /api/
-└── services/
-    └── hello.py             # HelloService
-tests/
-├── conftest.py
-└── test_hello.py
-```
+See [ARCHITECTURE.md](./ARCHITECTURE.md) for the directory layout, request lifecycle, and how to add routes, middlewares, or services.
 
-## How to Add Things
+## Releasing
 
-### Add a route
-
-Create a route file, then include it in `app/main.py`:
-
-```python
-# app/routes/items.py
-from fastapi import APIRouter
-
-router = APIRouter(prefix="/items", tags=["items"])
-
-@router.get("")
-async def list_items():
-    return [{"id": 1, "name": "Widget"}]
-```
-
-```python
-# app/main.py
-from app.routes.items import router as items_router
-
-api_router.include_router(items_router)
-```
-
-### Add a middleware
-
-Create middleware in `app/middlewares/`, register it in `setup.py`.
-
-### Add a service
-
-Create service in `app/services/`, instantiate it in your route:
-
-```python
-@router.get("/stuff")
-async def stuff():
-    service = MyService()
-    return service.do_thing()
-```
-
-For dependencies (DB, HTTP client, etc.), pass them into the constructor or use `Depends()`.
-
-## Configuration
-
-Set via environment variables — no prefix. Copy `.env.example` to `.env` if needed.
-
-| Variable     | Default | Description |
-| ------------ | ------- | ----------- |
-| `PORT`       | `8000`  | Server port |
-| `API_PREFIX` | `/api`  | API prefix  |
-
-Extend `Settings` in `app/config.py`:
-
-```python
-class Settings(BaseSettings):
-    port: int = 8000
-    api_prefix: str = "/api"
-    database_url: str = "..."  # your field
-```
-
-## Changelog
-
-Uses [changelogen](https://github.com/unjs/changelogen) — automatic changelog from [Conventional Commits](https://www.conventionalcommits.org/).
-
-| Script           | What it does                                         |
-| ---------------- | ---------------------------------------------------- |
-| `pnpm changelog` | Bump version + update `CHANGELOG.md`. No commit/tag. |
-| `pnpm release`   | Full release: `changelog` + git commit + git tag.    |
-
-**Workflow**:
+Bump version, regenerate the changelog, sync `pyproject.toml`, and tag in one shot:
 
 ```bash
-# 1. Preview what the next version looks like
-pnpm changelog
-
-# 2. Review CHANGELOG.md and version bump, then release
-pnpm release
-
-# 3. Push the release commit and tag
+pnpm install        # ensures changelogen is present (one-time)
+bash scripts/release.sh
 git push --follow-tags
 ```
 
-`pnpm changelog` syncs version across `package.json` and `pyproject.toml` automatically. `pnpm release` commits both files + the changelog.
+Requires `node`, `pnpm`, and `git`. `scripts/release.sh` runs `scripts/changelog.sh` (changelogen bump + pyproject version sync), then commits and tags.
 
-## Linting & Formatting
+## License
 
-- **Python**: [ruff](https://docs.astral.sh/ruff/) — rules E, F, I, double quotes, 88 char lines
-- **Other**: [prettier](https://prettier.io/)
-- **Pre-commit**: [lint-staged](https://github.com/lint-staged/lint-staged) via [husky](https://typicode.github.io/husky/)
-
-## Architecture
-
-See [architecture.md](./architecture.md) for request flow and extension rules.
+This project is mode under [MIT](./LICENSE) license.
