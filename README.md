@@ -1,7 +1,5 @@
 # FastAPI Starter Template
 
-[![GitHub](https://img.shields.io/badge/github-devharshthakur/fastapi--starter--template-blue?logo=github)](https://github.com/devharshthakur/fastapi-starter-template)
-
 A clean, opinionated FastAPI starter that gets out of your way. Comes with uv for fast dependency management, Docker for production deployment, and pre-commit quality checks.
 
 ## Quick Start
@@ -31,9 +29,9 @@ pnpm docker:start
 | `pnpm docker:stop`    | Stop running containers (keep them)       |
 | `pnpm docker:clean`   | Stop and remove containers + network      |
 
-## Configuration — Just Environment Variables
+## Configuring environment vriables
 
-This template uses pydantic settings to parse env contents.
+This template uses pydantic settings to parse env contents before starting the server. So env files is the single source of truth
 
 | Variable     | Default | What it controls                                         |
 | ------------ | ------- | -------------------------------------------------------- |
@@ -47,20 +45,8 @@ Copy `.env.example` to `.env` and you're set. To add your own settings, extend t
 
 ## Project Structure & Architecture
 
-See [ARCHITECTURE.md](./ARCHITECTURE.md) for the directory layout, request lifecycle, and how to add routes, middlewares, or services.
-
-## Releasing
-
-Bump version, regenerate the changelog, sync `pyproject.toml`, and tag in one shot:
-
-```bash
-pnpm install        # ensures changelogen is present (one-time)
-bash scripts/release.sh
-git push --follow-tags
-```
-
-Requires `node`, `pnpm`, and `git`. `scripts/release.sh` runs `scripts/changelog.sh` (changelogen bump + pyproject version sync), then commits and tags.
+See [ARCHITECTURE.md](./ARCHITECTURE.md) for the directory layout, request lifecycle, and how to add routes, middlewares, or services and more.
 
 ## License
 
-This project is mode under [MIT](./LICENSE) license.
+This project is made under [MIT](./LICENSE) license.
