@@ -18,8 +18,21 @@ fi
 echo "→ Removing template .git history…"
 rm -rf .git
 
-# remove template-internal tooling not needed in generated projects
-rm -f scripts/changelog.sh scripts/release.sh CHANGELOG.md
+# remove template-internal tooling & generated artifacts
+rm -f cliff.toml CHANGELOG.md scripts/changelog.sh scripts/release.sh
+rm -rf .pytest_cache .DS_Store
+
+# strip template metadata from package.json
+echo "→ Stripping template metadata from package.json…"
+node -e "
+  const fs = require('fs');
+  const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+  pkg.version = '0.1.0';
+  pkg.description = '';
+  delete pkg.author;
+  pkg.keywords = [];
+  fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
+"
 
 echo "→ Initialising fresh repository…"
 git init -b main
