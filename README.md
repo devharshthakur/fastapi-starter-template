@@ -7,11 +7,13 @@ A clean, opinionated FastAPI starter that gets out of your way. Comes with uv fo
 ```bash
 git clone https://github.com/devharshthakur/fastapi-starter-template.git my-app
 cd my-app
-pnpm install
+pnpm init        # one-time: fresh git, uv sync, .env
+pnpm install     # installs dev tooling (husky, lint-staged, prettier)
+pnpm dev         # start the dev server
 ```
 
->[!IMPORTANT]
-On running `pnpm install` it triggers the postinstall script [`setup.sh](./setup.sh). This strips the template's git history, initialises a fresh repository, installs Python dependencies, generates `.env`, and starts the dev server — all in one command.
+> [!IMPORTANT]
+> `pnpm init` runs [`setup.sh`](./setup.sh) which strips the template's git history, initialises a fresh repository, installs Python dependencies via uv, and generates `.env` from `.env.example`. Run it once after cloning. Then `pnpm install` sets up the dev toolchain (husky, lint-staged, prettier, eslint).
 
 ## Configuring environment vriables
 

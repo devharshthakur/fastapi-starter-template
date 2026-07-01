@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 # setup.sh — Bootstrap a clean FastAPI project from this template.
 # Run once after cloning:
-#   pnpm install
+#   pnpm init
 # What it does:
 #   1. Removes template .git history & template-specific files
 #   2. Strips template metadata from package.json
 #   3. Initialises a fresh git repo with an initial commit
 #   4. Installs Python dependencies via uv
 #   5. Generates .env from .env.example (if not present)
-#   6. Starts the dev server
 set -euo pipefail
 
 # preflight
@@ -43,9 +42,9 @@ node -e "
 echo "→ Initialising fresh repository…"
 git init -b main
 git add -A
-git commit -m "chore: init from fastapi-starter-template"
+git commit --no-verify -m "chore: init from fastapi-starter-template"
 
-# install & run
+# install dependencies & generate config
 echo "→ Installing Python dependencies…"
 uv sync
 
@@ -53,6 +52,5 @@ echo "→ Generating .env from .env.example…"
 cp -n .env.example .env 2>/dev/null || true
 
 echo ""
-echo "✔  Bootstrap complete! Starting dev server…"
+echo "✔  Bootstrap complete! Run 'pnpm install' to install dev tooling, then 'pnpm dev' to start."
 echo ""
-pnpm dev

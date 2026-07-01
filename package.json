@@ -16,7 +16,7 @@
     "docker:start": "docker compose up -d",
     "docker:stop": "docker compose stop",
     "docker:clean": "docker compose down",
-    "postinstall": "bash setup.sh",
+    "init": "bash setup.sh",
     "prepare": "husky"
   },
   "keywords": [],
