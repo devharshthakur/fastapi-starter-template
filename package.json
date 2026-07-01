@@ -24,7 +24,7 @@
     "email": "harshprojects2002@outlook.com",
     "url": "https://github.com/devharshthakur"
   },
-  "packageManager": "pnpm@11.7.0",
+  "packageManager": "pnpm@11.9.0",
   "license": "MIT",
   "devDependencies": {
     "eslint": "^10.6.0",
