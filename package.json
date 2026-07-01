@@ -7,7 +7,7 @@
     "dev": "uv run python scripts/serve.py --dev",
     "start": "uv run python scripts/serve.py",
     "lint": "uv run ruff check . && prettier --check .",
-    "format": "uv run ruff format . && prettier --write .",
+    "format": "uv run ruff format . && prettier --write --list-different .",
     "typecheck": "uv run ty check",
     "test": "uv run pytest",
     "check": "pnpm lint && pnpm typecheck && pnpm test",
