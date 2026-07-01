@@ -1,82 +1,82 @@
 # Changelog
 
-## v1.4.0
+All notable changes to this project will be documented in this file.
 
-[compare changes](https://github.com/devharshthakur/fastapi-starter-template/compare/v1.3.0...v1.4.0)
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-### 🚀 Enhancements
+## [Unreleased]
 
-- **scripts:** Add serve.py launcher ([77802a6](https://github.com/devharshthakur/fastapi-starter-template/commit/77802a6))
-- **docker:** Parameterize port via build arg ([aefad2c](https://github.com/devharshthakur/fastapi-starter-template/commit/aefad2c))
+### Added
 
-### 🩹 Fixes
+- Add DS_Store
 
-- Config files ([be23369](https://github.com/devharshthakur/fastapi-starter-template/commit/be23369))
+### Changed
 
-### 💅 Refactors
+- Version bump
+- Setup git-cliff
+- Bump deps
 
-- **app:** Inject settings and rename main to app ([3fd6003](https://github.com/devharshthakur/fastapi-starter-template/commit/3fd6003))
+### Fixed
 
-### 📖 Documentation
+- Cleanup scripts
+- Format script
 
-- Rewrite README and architecture ([c41de81](https://github.com/devharshthakur/fastapi-starter-template/commit/c41de81))
+## [1.4.0] - 2026-06-20
 
-### 🏡 Chore
+### Added
 
-- **scripts:** Swap TS release tooling for shell ([1b97d79](https://github.com/devharshthakur/fastapi-starter-template/commit/1b97d79))
-- Drop TypeScript toolchain ([9223793](https://github.com/devharshthakur/fastapi-starter-template/commit/9223793))
+- Add serve.py launcher
 
-### ❤️ Contributors
+### Changed
 
-- Harsh Thakur ([@devharshthakur](https://github.com/devharshthakur))
+- Bump version
+- Rewrite README and architecture
+- Parameterize port via build arg
+- Drop TypeScript toolchain
+- Swap TS release tooling for shell
+- Inject settings and rename main to app
 
-## v1.3.0
+### Fixed
 
-[compare changes](https://github.com/devharshthakur/fastapi-starter-template/compare/v1.0.0...v1.3.0)
+- Config files
 
-### 🚀 Enhancements
+## [1.3.0] - 2026-06-18
 
-- Setup script ([7061221](https://github.com/devharshthakur/fastapi-starter-template/commit/7061221))
-- Changelog setup ([222d32f](https://github.com/devharshthakur/fastapi-starter-template/commit/222d32f))
+### Changed
 
-### 🩹 Fixes
+- Release v1.3.0 by @devharshthakur
+- Merge pull request #2 from devharshthakur/setup/changelog by @devharshthakur in [#2](https://github.com/devharshthakur/fastapi-starter-template/pull/2)
+- Changelog setup by @devharshthakur
+- Setup script by @devharshthakur
 
-- Setup script ([b6fb77f](https://github.com/devharshthakur/fastapi-starter-template/commit/b6fb77f))
-- Correct tsconfig module resolution for node types ([bff9fc2](https://github.com/devharshthakur/fastapi-starter-template/commit/bff9fc2))
-- Switch tsconfig module resolution to NodeNext ([1ecdbcf](https://github.com/devharshthakur/fastapi-starter-template/commit/1ecdbcf))
+### Fixed
 
-### ❤️ Contributors
+- Switch tsconfig module resolution to NodeNext by @devharshthakur
+- Correct tsconfig module resolution for node types by @devharshthakur
+- Fix : setup script by @devharshthakur
+- Setup script by @devharshthakur
 
-- Harsh Thakur ([@devharshthakur](https://github.com/devharshthakur))
+## [1.0.0] - 2026-06-18
 
-## v1.2.0
+### Changed
 
-[compare changes](https://github.com/devharshthakur/fastapi-starter-template/compare/v1.0.0...v1.2.0)
+- Format by @devharshthakur in [#1](https://github.com/devharshthakur/fastapi-starter-template/pull/1)
+- Setup docker by @devharshthakur
+- Initial commit by @devharshthakur
+- Initial commit by @devharshthakur
 
-### 🚀 Enhancements
+### Fixed
 
-- Setup script ([7061221](https://github.com/devharshthakur/fastapi-starter-template/commit/7061221))
+- Rename Dockerfile, restore architecture.md, cleanup compose comments by @devharshthakur
+- Github refrences by @devharshthakur
 
-### 🩹 Fixes
+### New Contributors
 
-- Setup script ([b6fb77f](https://github.com/devharshthakur/fastapi-starter-template/commit/b6fb77f))
+- @devharshthakur made their first contribution in [#1](https://github.com/devharshthakur/fastapi-starter-template/pull/1)
 
-### ❤️ Contributors
+[unreleased]: https://github.com/devharshthakur/fastapi-starter-template/compare/v1.4.0...HEAD
+[1.4.0]: https://github.com/devharshthakur/fastapi-starter-template/compare/v1.3.0...v1.4.0
+[1.3.0]: https://github.com/devharshthakur/fastapi-starter-template/compare/v1.0.0...v1.3.0
 
-- Harsh Thakur ([@devharshthakur](https://github.com/devharshthakur))
-
-## v1.1.0
-
-[compare changes](https://github.com/devharshthakur/fastapi-starter-template/compare/v1.0.0...v1.1.0)
-
-### 🚀 Enhancements
-
-- Setup script ([7061221](https://github.com/devharshthakur/fastapi-starter-template/commit/7061221))
-
-### 🩹 Fixes
-
-- Setup script ([b6fb77f](https://github.com/devharshthakur/fastapi-starter-template/commit/b6fb77f))
-
-### ❤️ Contributors
-
-- Harsh Thakur ([@devharshthakur](https://github.com/devharshthakur))
+<!-- generated by git-cliff -->
