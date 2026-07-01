@@ -9,18 +9,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Add docs in setup files
 - Add DS_Store
 
 ### Changed
 
+- Update
+- Update quick start for pnpm install workflow
+- Strip template files for clean project slate
+- Create github action workflows
+- Cleanup template metadata from `package.json`
+- Recreated `CHABNGELOG` using `git-cliff`
 - Version bump
 - Setup git-cliff
 - Bump deps
 
 ### Fixed
 
+- Destructive install loop
+- Readme
+- Run full bootstrap via pnpm postinstall
 - Cleanup scripts
 - Format script
+
+### Removed
+
+- Remove init
 
 ## [1.4.0] - 2026-06-20
 
