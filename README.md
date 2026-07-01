@@ -7,10 +7,10 @@ A clean, opinionated FastAPI starter that gets out of your way. Comes with uv fo
 ```bash
 git clone https://github.com/devharshthakur/fastapi-starter-template.git my-app
 cd my-app
-bash setup.sh
+pnpm install
 ```
 
-This strips the template's git history, initialises a fresh repository, installs everything, and starts the dev server. You go from clone to `localhost:8000/api/` in one command.
+This strips the template's git history, initialises a fresh repository, installs Python dependencies, generates `.env`, and starts the dev server — all in one command.
 
 ## Run project via Docker
 
