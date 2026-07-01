@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
-set -euo pipefail
-
-# Usage: clone the repo, cd into it, then run this script.
-#   git clone https://github.com/devharshthakur/fastapi-starter-template.git my-app
-#   cd my-app
+# setup.sh — Bootstrap a clean FastAPI project from this template.
+# Run once after cloning:
 #   bash setup.sh
+# What it does:
+#   1. Removes template .git history & template-specific files
+#   2. Strips template metadata from package.json
+#   3. Initialises a fresh git repo with an initial commit
+#   4. Installs Python & Node dependencies
+#   5. Generates .env from .env.example (if not present)
+#   6. Starts the dev server
+set -euo pipefail
 
 # preflight
 command -v git >/dev/null 2>&1 || { echo >&2 "ERROR: git is required but not installed."; exit 1; }
@@ -18,9 +23,10 @@ fi
 echo "→ Removing template .git history…"
 rm -rf .git
 
-# remove template-internal tooling & generated artifacts
-rm -f cliff.toml CHANGELOG.md scripts/changelog.sh scripts/release.sh
-rm -rf .pytest_cache .DS_Store
+# remove template-internal tooling, workflows & generated artifacts
+rm -f cliff.toml CHANGELOG.md
+rm -rf .github .pytest_cache .ruff_cache .DS_Store
+find . -type d -name __pycache__ -prune -exec rm -rf {} +
 
 # strip template metadata from package.json
 echo "→ Stripping template metadata from package.json…"
