@@ -28,10 +28,10 @@
   "license": "MIT",
   "devDependencies": {
     "changelogen": "^0.6.2",
-    "eslint": "^10.5.0",
+    "eslint": "^10.6.0",
     "husky": "^9.1.7",
-    "lint-staged": "^17.0.7",
-    "prettier": "^3.8.4",
+    "lint-staged": "^17.0.8",
+    "prettier": "^3.9.4",
     "prettier-plugin-toml": "^2.0.6"
   }
 }
