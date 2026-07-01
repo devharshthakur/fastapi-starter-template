@@ -5,67 +5,60 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.5.0] - 2026-07-01
 
 ### Added
-
-- Add docs in setup files
-- Add DS_Store
+- Add docs in setup files by @devharshthakur
+- Add DS_Store by @devharshthakur
 
 ### Changed
-
-- Update
-- Update quick start for pnpm install workflow
-- Strip template files for clean project slate
-- Create github action workflows
-- Cleanup template metadata from `package.json`
-- Recreated `CHABNGELOG` using `git-cliff`
-- Version bump
-- Setup git-cliff
-- Bump deps
+- Update changelog by @devharshthakur
+- Disabled biome in local vscode config by @devharshthakur
+- Update by @devharshthakur
+- Update quick start for pnpm install workflow by @devharshthakur
+- Strip template files for clean project slate by @devharshthakur
+- Create github action workflows by @devharshthakur
+- Cleanup template metadata from `package.json` by @devharshthakur
+- Recreated `CHABNGELOG` using `git-cliff` by @devharshthakur
+- Version bump by @devharshthakur
+- Setup git-cliff by @devharshthakur
+- Bump deps by @devharshthakur
 
 ### Fixed
-
-- Destructive install loop
-- Readme
-- Run full bootstrap via pnpm postinstall
-- Cleanup scripts
-- Format script
+- Destructive install loop by @devharshthakur
+- Readme by @devharshthakur
+- Run full bootstrap via pnpm postinstall by @devharshthakur
+- Cleanup scripts by @devharshthakur
+- Format script by @devharshthakur
 
 ### Removed
-
-- Remove init
+- Remove init by @devharshthakur
 
 ## [1.4.0] - 2026-06-20
 
 ### Added
-
-- Add serve.py launcher
+- Add serve.py launcher by @devharshthakur
 
 ### Changed
-
-- Bump version
-- Rewrite README and architecture
-- Parameterize port via build arg
-- Drop TypeScript toolchain
-- Swap TS release tooling for shell
-- Inject settings and rename main to app
+- Bump version by @devharshthakur
+- Rewrite README and architecture by @devharshthakur
+- Parameterize port via build arg by @devharshthakur
+- Drop TypeScript toolchain by @devharshthakur
+- Swap TS release tooling for shell by @devharshthakur
+- Inject settings and rename main to app by @devharshthakur
 
 ### Fixed
-
-- Config files
+- Config files by @devharshthakur
 
 ## [1.3.0] - 2026-06-18
 
 ### Changed
-
 - Release v1.3.0 by @devharshthakur
 - Merge pull request #2 from devharshthakur/setup/changelog by @devharshthakur in [#2](https://github.com/devharshthakur/fastapi-starter-template/pull/2)
 - Changelog setup by @devharshthakur
 - Setup script by @devharshthakur
 
 ### Fixed
-
 - Switch tsconfig module resolution to NodeNext by @devharshthakur
 - Correct tsconfig module resolution for node types by @devharshthakur
 - Fix : setup script by @devharshthakur
@@ -74,22 +67,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2026-06-18
 
 ### Changed
-
 - Format by @devharshthakur in [#1](https://github.com/devharshthakur/fastapi-starter-template/pull/1)
 - Setup docker by @devharshthakur
 - Initial commit by @devharshthakur
 - Initial commit by @devharshthakur
 
 ### Fixed
-
 - Rename Dockerfile, restore architecture.md, cleanup compose comments by @devharshthakur
 - Github refrences by @devharshthakur
 
 ### New Contributors
+* @devharshthakur made their first contribution in [#1](https://github.com/devharshthakur/fastapi-starter-template/pull/1)
 
-- @devharshthakur made their first contribution in [#1](https://github.com/devharshthakur/fastapi-starter-template/pull/1)
-
-[unreleased]: https://github.com/devharshthakur/fastapi-starter-template/compare/v1.4.0...HEAD
+[1.5.0]: https://github.com/devharshthakur/fastapi-starter-template/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/devharshthakur/fastapi-starter-template/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/devharshthakur/fastapi-starter-template/compare/v1.0.0...v1.3.0
 
