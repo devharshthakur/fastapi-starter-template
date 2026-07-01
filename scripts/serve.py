@@ -1,7 +1,9 @@
 """Run the FastAPI app via the bundled `fastapi` CLI.
 
 PORT is read from .env through Settings, so dev, prod, and Docker all share
-one source of truth. Usage:
+one source of truth. Create .env from .env.example to customise settings.
+
+Usage:
     python scripts/serve.py --dev   # fastapi dev (reload)
     python scripts/serve.py         # fastapi run (production)
 """
