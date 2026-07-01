@@ -1,0 +1,6 @@
+{
+  "python.languageServer": "Pylance",
+  "ruff.enable": true,
+  "ty.disableLanguageServices": true,
+  "biome.enabled": false
+}

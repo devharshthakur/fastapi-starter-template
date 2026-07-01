@@ -10,25 +10,20 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 # All app code lives under /app; uv creates .venv here during sync
 WORKDIR /app
 
-# Layer 1 — Install third-party dependencies (cached until uv.lock or pyproject.toml change)
-RUN --mount=type=cache,target=/root/.cache/uv \
-    --mount=type=bind,source=uv.lock,target=uv.lock \
-    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --frozen --no-install-project --no-editable
-
-# Copy application source (main.py, app/, uv.lock, etc.)
+# Copy the whole project, then install everything in one pass.
+# Simpler than a split deps-then-project build; trades a larger layer for clarity.
 COPY . /app
-
-# Layer 2 — Install the project into the already-built .venv from Layer 1
-# Only processes the project's own entry points; all third-party deps already resolved
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen --no-editable
 
-# Activate venv: fastapi / python resolve directly without `uv run` prefix
-ENV PATH="/app/.venv/bin:$PATH"
+# PORT is sourced from .env via docker-compose build args (see docker-compose.yml).
+# Falls back to 8000 when building without compose/args (e.g. plain `docker build`).
+ARG PORT=8000
+ENV PORT=$PORT
 
-# Expose ports
-EXPOSE 8000
+# Expose the port the server listens on
+EXPOSE $PORT
 
-# Run the server in production mode
-CMD ["fastapi", "run", "main.py", "--port", "8000"]
+# Run the server in production mode via `uv run` so the venv is handled
+# automatically (PORT read from .env via scripts/serve.py)
+CMD ["uv", "run", "python", "scripts/serve.py"]

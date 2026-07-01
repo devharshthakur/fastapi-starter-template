@@ -5,5 +5,6 @@ def test_status_returns_running(client):
     data = response.json()
     assert data["status"] == "ok"
     assert data["message"] == "API server is running"
+    assert data["port"] == 8000
     assert data["request_id"]
     assert response.headers["X-Request-ID"]

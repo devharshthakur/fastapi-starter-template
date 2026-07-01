@@ -1,9 +1,18 @@
 # FastAPI Starter Template — Production Docker Compose
 # One-command deployment:  cp .env.example .env && docker compose up -d
+#
+# .env is the single source of truth for configuration:
+#   - build args  → forwarded below via ${VAR} substitution (compose auto-loads .env)
+#   - runtime env → injected into the container via env_file below
+# Add a variable to .env and it flows to the container at run time with no extra wiring;
+# add it to `args` only if the Dockerfile needs it at build time.
 
 services:
   app:
-    build: .
+    build:
+      context: .
+      args:
+        PORT: ${PORT:-8000}
 
     ports:
       - '${PORT:-8000}:${PORT:-8000}'
@@ -17,6 +26,8 @@ services:
       test:
         [
           'CMD',
+          'uv',
+          'run',
           'python',
           '-c',
           "import urllib.request; urllib.request.urlopen('http://localhost:${PORT:-8000}/api/')",

@@ -1,23 +1,22 @@
 {
   "name": "fastapi-starter-template",
-  "version": "1.3.0",
-  "description": "",
+  "version": "1.4.0",
+  "description": "A lean fastapi starter template",
   "type": "module",
   "scripts": {
-    "dev": "uv run fastapi dev main.py",
-    "start": "uv run fastapi run main.py",
-    "lint": "uv run ruff check . && pnpm exec prettier --check .",
-    "format": "uv run ruff format . && pnpm exec prettier --write .",
+    "dev": "uv run python scripts/serve.py --dev",
+    "start": "uv run python scripts/serve.py",
+    "lint": "uv run ruff check . && prettier --check .",
+    "format": "uv run ruff format . && prettier --write --list-different .",
     "typecheck": "uv run ty check",
     "test": "uv run pytest",
     "check": "pnpm lint && pnpm typecheck && pnpm test",
     "docker:build": "docker compose build",
-    "docker:up": "docker compose up -d",
-    "docker:down": "docker compose down",
-    "docker:logs": "docker compose logs -f",
-    "prepare": "husky",
-    "changelog": "tsx scripts/changelog.ts",
-    "release": "tsx scripts/release.ts"
+    "docker:rebuild": "docker compose build --no-cache",
+    "docker:start": "docker compose up -d",
+    "docker:stop": "docker compose stop",
+    "docker:clean": "docker compose down",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": {
@@ -25,19 +24,13 @@
     "email": "harshprojects2002@outlook.com",
     "url": "https://github.com/devharshthakur"
   },
-  "packageManager": "pnpm@11.7.0",
+  "packageManager": "pnpm@11.9.0",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^25.9.3",
-    "changelogen": "^0.6.2",
-    "eslint": "^10.5.0",
+    "eslint": "^10.6.0",
     "husky": "^9.1.7",
-    "lint-staged": "^17.0.7",
-    "prettier": "^3.8.4",
-    "prettier-plugin-toml": "^2.0.6",
-    "tsx": "^4.22.4"
-  },
-  "dependencies": {
-    "typescript": "^6.0.3"
+    "lint-staged": "^17.0.8",
+    "prettier": "^3.9.4",
+    "prettier-plugin-toml": "^2.0.6"
   }
 }
