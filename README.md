@@ -7,7 +7,7 @@ A clean, opinionated FastAPI starter that gets out of your way. Comes with uv fo
 ```bash
 git clone https://github.com/devharshthakur/fastapi-starter-template.git my-app
 cd my-app
-pnpm init        # one-time: fresh git, uv sync, .env
+bash setup.sh       # one-time: fresh git, uv sync, .env
 pnpm install     # installs dev tooling (husky, lint-staged, prettier)
 pnpm dev         # start the dev server
 ```
