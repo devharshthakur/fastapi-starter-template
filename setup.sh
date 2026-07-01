@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # setup.sh — Bootstrap a clean FastAPI project from this template.
 # Run once after cloning:
-#   bash setup.sh
+#   pnpm install
 # What it does:
 #   1. Removes template .git history & template-specific files
 #   2. Strips template metadata from package.json
 #   3. Initialises a fresh git repo with an initial commit
-#   4. Installs Python & Node dependencies
+#   4. Installs Python dependencies via uv
 #   5. Generates .env from .env.example (if not present)
 #   6. Starts the dev server
 set -euo pipefail
@@ -49,9 +49,7 @@ git commit -m "chore: init from fastapi-starter-template"
 echo "→ Installing Python dependencies…"
 uv sync
 
-echo "→ Installing Node dependencies…"
-pnpm install
-
+echo "→ Generating .env from .env.example…"
 cp -n .env.example .env 2>/dev/null || true
 
 echo ""
