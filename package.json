@@ -10,6 +10,7 @@
     "format": "uv run ruff format . && prettier --write --list-different .",
     "typecheck": "uv run ty check",
     "test": "uv run pytest",
+    "test:setup": "bash test-setup.sh",
     "check": "pnpm lint && pnpm typecheck && pnpm test",
     "docker:build": "docker compose build",
     "docker:rebuild": "docker compose build --no-cache",

@@ -34,7 +34,10 @@ node -e "
   const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
   pkg.version = '0.1.0';
   pkg.description = '';
+  delete pkg.name;
   delete pkg.author;
+  delete pkg.packageManager;
+  delete (pkg.scripts || {})['test:setup'];
   pkg.keywords = [];
   fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
 "
@@ -50,6 +53,9 @@ uv sync
 
 echo "→ Generating .env from .env.example…"
 cp -n .env.example .env 2>/dev/null || true
+
+# remove template setup scripts
+rm -f test-setup.sh setup.sh
 
 echo ""
 echo "✔  Bootstrap complete! Run 'pnpm install' to install dev tooling, then 'pnpm dev' to start."
