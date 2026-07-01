@@ -27,7 +27,6 @@
   "packageManager": "pnpm@11.7.0",
   "license": "MIT",
   "devDependencies": {
-    "changelogen": "^0.6.2",
     "eslint": "^10.6.0",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.8",
