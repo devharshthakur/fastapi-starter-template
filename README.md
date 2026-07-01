@@ -10,6 +10,7 @@ cd my-app
 pnpm install
 ```
 
+>[!IMPORTANT]
 On running `pnpm install` it triggers the postinstall script [`setup.sh](./setup.sh). This strips the template's git history, initialises a fresh repository, installs Python dependencies, generates `.env`, and starts the dev server — all in one command.
 
 ## Configuring environment vriables
